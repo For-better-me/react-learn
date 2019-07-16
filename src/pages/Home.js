@@ -2,20 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header'
 class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name:'www'
-        }
+    // constructor(props) {
+    //     super(props);
 
+
+    // }
+    state = {
+        name: 'www',
+        age: 12
     }
-
-    componentWillMount() {
-        console.log(this,this.props)
+    state_2 = {
+        sex: 's'
+    }
+    componentWillMount = () => {
+        console.log(super.prototype)
+        // this.setState({
+        //     name:this.state.age
+        // })
     }
 
     componentDidMount() {
-
+        this.try()
+        console.log('componentDidMount', this, this.props)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -37,26 +45,42 @@ class Home extends Component {
     componentWillUnmount() {
 
     }
-    changeData(){
+    changeData() {
         console.log(this)
         this.setState({
-            name:'zhangwenjie'
+            name: 'zhangwenjie'
         })
     }
-    changeInput(event){
+    changeInput(event) {
         console.log(event.target)
         this.setState({
-            name:event.target.value
+            name: event.target.value
         })
+    }
+    setPropP = (value) => {
+        this.setState({
+            name: value
+        })
+    }
+    try() {
+        console.log(this, 'try')
     }
     render() {
         return (
             <div ref='root'>
-                <Header text={this.state.name}/>
-                Home{this.state.name}
-                <input value={this.state.name} onChange={this.changeInput.bind(this)}/>
+                <Header text={this.state.name} setProp={this.setPropP} >
+                    {/* <h1 className="Dialog-title">
+                        Welcome
+                    </h1> */}
+                    left = '<div>i am child-left</div>'
+                </Header>
+                <Header text='所爱隔山海，山海皆可平' setProp={this.setPropP} />
+                <Header text={this.state.name} setProp={this.setPropP} />
+                Home{this.state.name}{new Date().toLocaleTimeString()}
+                <input value={this.state.name} onChange={this.changeInput.bind(this)} />
                 {/* <button onClick={this.props.history.push('/detail')}>go detail</button> */}
                 <button onClick={this.changeData.bind(this)}>change name</button>
+                <button onClick={this.try}>change try</button>
             </div>
         );
     }
