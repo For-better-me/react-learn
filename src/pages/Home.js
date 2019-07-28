@@ -37,7 +37,7 @@ class Home extends Component {
     componentWillUnmount() {
 
     }
-    changeData(){
+    changeData = ()=>{
         console.log(this)
         this.setState({
             name:'zhangwenjie'
@@ -56,7 +56,7 @@ class Home extends Component {
                 Home{this.state.name}
                 <input value={this.state.name} onChange={this.changeInput.bind(this)}/>
                 {/* <button onClick={this.props.history.push('/detail')}>go detail</button> */}
-                <button onClick={this.changeData.bind(this)}>change name</button>
+                <button onClick={this.changeData}>change name</button>
             </div>
         );
     }
