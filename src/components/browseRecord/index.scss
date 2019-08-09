@@ -1,0 +1,36 @@
+.browse_wrap{
+    margin: 20px;
+    margin-bottom: 0;
+    border-bottom: #e8e8e8 solid 1px;
+    li{
+        line-height: 36px;
+        padding: 0 15px;
+        padding-right: 10px;
+        background: #f8f8f8;
+        display: inline-block;
+        border:#e8e8e8 solid 1px;
+        border-bottom: none;
+        position: relative;
+        top: 1px;
+        &.on{
+            background: #fff;
+            padding-bottom: 1px;
+            a{
+                color:#1890ff
+            }
+        }
+        &:hover{
+            a{
+                color:#1890ff
+            }
+        }
+        a{
+            color: #666;
+            padding-right: 10px;
+        }
+        i{
+            font-size: 12px;
+            color: #999;
+        }
+    }
+}
