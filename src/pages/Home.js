@@ -1,87 +1,85 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header'
-class Home extends Component {
-    // constructor(props) {
-    //     super(props);
+import { Table } from 'antd';
+import { connect } from 'react-redux'
+import { setRouteRecord } from '../store/action'
+import B from './Base'
 
+class Home extends B {
+    constructor(props) {
+        super(props);
+        this.state = {
 
-    // }
-    state = {
-        name: 'www',
-        age: 12
-    }
-    state_2 = {
-        sex: 's'
-    }
-    componentWillMount = () => {
-        console.log(super.prototype)
-        // this.setState({
-        //     name:this.state.age
-        // })
-    }
+        }
+        
 
+    }
     componentDidMount() {
-        this.try()
-        console.log('componentDidMount', this, this.props)
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-
-    // }
-
-    componentWillUpdate(nextProps, nextState) {
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
+        console.log('home')
     }
 
     componentWillUnmount() {
 
     }
-    changeData() {
-        console.log(this)
-        this.setState({
-            name: 'zhangwenjie'
-        })
-    }
-    changeInput(event) {
-        console.log(event.target)
-        this.setState({
-            name: event.target.value
-        })
-    }
-    setPropP = (value) => {
-        this.setState({
-            name: value
-        })
-    }
-    try() {
-        console.log(this, 'try')
-    }
+   
+
     render() {
+        console.log('home--render')
+        const columns = [
+            {
+                title: '姓名',
+                dataIndex: 'name',
+                key: 'name',
+            },
+            {
+                title: '年龄',
+                dataIndex: 'age',
+                key: 'age',
+            },
+            {
+                title: '住址',
+                dataIndex: 'address',
+                key: 'address',
+            },
+        ];
+        const dataSource = [
+            {
+                key: '1',
+                name: '胡彦斌',
+                age: 32,
+                address: '西湖区湖底公园1号',
+            },
+            {
+                key: '2',
+                name: '吴彦祖',
+                age: 42,
+                address: '西湖区湖底公园1号',
+            },
+        ];
+        let msg
+        if (true) {
+            msg = (<p>i am true</p>)//（标签，组件）{js代码}
+        } else {
+            msg = (<p>i am false</p>)
+        }
+        let { routes } = this.props
         return (
-            <div ref='root'>
-                <Header text={this.state.name} setProp={this.setPropP} >
-                    {/* <h1 className="Dialog-title">
-                        Welcome
-                    </h1> */}
-                    left = '<div>i am child-left</div>'
-                </Header>
-                <Header text='所爱隔山海，山海皆可平' setProp={this.setPropP} />
-                <Header text={this.state.name} setProp={this.setPropP} />
-                Home{this.state.name}{new Date().toLocaleTimeString()}
-                <input value={this.state.name} onChange={this.changeInput.bind(this)} />
-                {/* <button onClick={this.props.history.push('/detail')}>go detail</button> */}
-                <button onClick={this.changeData.bind(this)}>change name</button>
-                <button onClick={this.try}>change try</button>
-            </div>
+
+            <div>
+                <Table dataSource={dataSource} columns={columns} />
+                <ul>
+                    {
+                        dataSource.map(item => {
+                            return <li key={item.key}>{item.name}</li>
+                        })
+                    }
+                </ul>
+
+                {msg}
+
+
+
+            </div >
         );
     }
 }
@@ -89,5 +87,14 @@ class Home extends Component {
 Home.propTypes = {
 
 };
-
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        routes: state.routesList
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        set: (routes) => dispatch(setRouteRecord(routes))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
