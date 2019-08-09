@@ -22,7 +22,6 @@ class Home extends B {
 
     }
    
-
     render() {
         console.log('home--render')
         const columns = [
@@ -63,24 +62,10 @@ class Home extends B {
             msg = (<p>i am false</p>)
         }
         let { routes } = this.props
-        return (
-
-            <div>
-                <Table dataSource={dataSource} columns={columns} />
-                <ul>
-                    {
-                        dataSource.map(item => {
-                            return <li key={item.key}>{item.name}</li>
-                        })
-                    }
-                </ul>
-
-                {msg}
-
-
-
-            </div >
-        );
+        return(
+            <div>0000</div>
+        )
+ 
     }
 }
 
