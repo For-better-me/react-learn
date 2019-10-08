@@ -1,4 +1,4 @@
-//index.js
+import * as types from './action-type'
 
 //创建一个容器: 需要把reducer 传递进来(登记了所有状态更改的信息)
 import { createStore } from 'redux';
@@ -11,27 +11,31 @@ import { createStore } from 'redux';
         reducer 就是根据这个行为标识来识别修改状态信息
 * */
 let defaultState = {
-    routesList: [
-        {
-            path:'/home',
-            name:'用户信息'
-        },
-        {
-            path: '/detail',
-            name: '基础表单'
-        }
-    ],   // 路由浏览记录
+    routesList: new Set(),   // 路由浏览记录
+    user:null,
+    test:'origin'
     
 }
 let reducer = (state = defaultState, action) => {
     switch (action.type) {
-        case 'ROUTE_RECORD':
-            //vote_support
-            state = { ...state, routesList: action.routes};
+        case types.ROUTE_RECORD:
+            console.log(action.routes)
+            return Object.assign({}, state, { routesList: new Set([...action.routes])})
+            // setTimeout(() => {
+            //     state = { ...state, routesList: action.routes };
+            // }, 2000);react 本身的redux 是不支持异步的
             break;
+        case types.USER:
+            sessionStorage.setItem('user', JSON.stringify(action.user))
+            return Object.assign({}, state, { user: action.user })
+            break;
+        case types.TEST:
+            return Object.assign({}, state, { test: action.test })
+            break;
+        default:
+            return state;
        
     }
-    return state;// 只有把最新的state返回,原有的状态才会修改
 };
 let store = createStore(reducer);
 export default store;

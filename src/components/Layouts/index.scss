@@ -7,8 +7,9 @@
 }
 .ant-layout-content{
     // min-height: calc(100vh - 200px);
-    height: calc(100vh - 124px);
+    height: calc(100vh - 147px);
     overflow-y: auto;
+    overflow-x: hidden;
 }
 .trigger {
     font-size  : 18px;

@@ -5,9 +5,10 @@ class Base extends Component {
         super()
     }
     componentWillMount(){
-        const { location} = this.props
-        console.log(location.state.title)
-        document.title = location.state.title
+      
+    }
+    commonFun(){
+        console.log('i am common function')
     }
    
   

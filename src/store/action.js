@@ -7,6 +7,19 @@ export const setRouteRecord = (routes) => {
         routes
     }
 }
+///记录用户信息
+export const setUser = (user) => {
+    return {
+        type: types.USER,
+        user
+    }
+}
+export const setTest = (test) => {
+    return {
+        type: types.TEST,
+        test
+    }
+}
 
 
 

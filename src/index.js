@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 
 // 由于 antd 组件的默认文案是英文，所以需要修改为中文
 import zhCN from 'antd/es/locale-provider/zh_CN';
@@ -9,10 +9,9 @@ import 'moment/locale/zh-cn';
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 import Router from './router'
+import { message} from 'antd';
 moment.locale('zh-cn');
-
-
-
+React.Component.prototype.$showToast = message
 ReactDOM.render(<Router />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
