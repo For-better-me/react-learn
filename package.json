@@ -1,7 +1,11 @@
 {
-  "name": "try-react",
-  "version": "0.1.0",
-  "private": true,
+  "name": "miss-react-ui",
+  "version": "1.0.2",
+  "files": [
+    "lib",
+    "packages",
+    "types"
+  ],
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "@antv/g2": "^3.5.8-beta.1",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  Test from '../components/Test';
-
+import Table from 'miss-react-ui'
 class Detail extends Component {
     constructor(props){
         super(props)
